@@ -144,6 +144,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "project-task-force"
+    }
+  },
+  "defaultProject": "project-task-force",
+  "cli": {
+    "analytics": false
+  }
 }
