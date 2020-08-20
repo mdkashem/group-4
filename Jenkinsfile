@@ -3,7 +3,10 @@ pipeline {
   stages {
     stage('Build Angular') {
       steps {
-        sh 'echo "hello"'
+        sh '''echo "hello"
+cd project-task-force
+
+npm install '''
       }
     }
 
