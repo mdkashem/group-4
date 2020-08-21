@@ -2,9 +2,9 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ConfirmPassword } from '../validators/confirm-password';
 import { User } from '../user';
-import { ApiService } from '../api.service';
+import { AuthService } from '../auth.service';
 
-// import { UniqueUser } from '../validators/unique-user';
+
 
 @Component({
   selector: 'app-registration',
@@ -12,8 +12,6 @@ import { ApiService } from '../api.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-
-
 
   @Output() createUser = new EventEmitter<any>();
 
@@ -50,9 +48,9 @@ export class RegistrationComponent implements OnInit {
   }, { validators: [this.confirmPassword.validate] });
 
   constructor(
-    private apiService:ApiService,
+    private authService:AuthService,
     private confirmPassword:ConfirmPassword,
-    // private  uniqueUser:UniqueUser
+
   ) { }
 
 
@@ -61,34 +59,31 @@ export class RegistrationComponent implements OnInit {
   onSubmit() {
     console.log(this.registrationForm.value);
     if (this.registrationForm.valid){
-      
+
       this.registrationForm.removeControl('passwordConfirm');
 
-      this.apiService.getUsers().subscribe((users)=> { // subscribe to observable is like .then()
+      this.authService.getUsers().subscribe((users)=> {
         this.users = users;
+        // Still need to check if username already exists
       });
 
-      this.apiService.createUser(this.registrationForm.value).subscribe(response => {
-
-
+      this.authService.createUser(this.registrationForm.value).subscribe(response => {
 
         this.users.push(response)
         console.log(response);
+        console.log(this.users); // For testing purposes
 
-        console.log(this.users);
       })
 
-      //this.createUser.emit(this.registrationForm.value)
-
     } else {
-      alert(this.registrationForm.errors)
+      alert("invalid form")
     }
 
   }
 
 
   ngOnInit(): void {
-    this.apiService.getUsers().subscribe((users)=> { // subscribe to observable is like .then()
+    this.authService.getUsers().subscribe((users)=> {    // subscribe to observable is like .then()
       this.users = users;
     });
   }

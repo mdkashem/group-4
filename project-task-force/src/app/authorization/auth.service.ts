@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { User } from './user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -13,9 +13,12 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class AuthService {
 
+  // FROM FAKE USERS API
   usersUrl:string = 'https://my-json-server.typicode.com/tr-1000/demo/users/'
+
+  signedIn = new BehaviorSubject(false);
 
   constructor(private http:HttpClient) { }
 
@@ -40,6 +43,22 @@ export class ApiService {
   deleteUser(user:User):Observable<User> {
     const url = `${this.usersUrl}/${user.id}`;
     return this.http.delete<User>(url, httpOptions)
+  }
+
+  authenticateUser() {
+    this.signedIn.next(true);
+    localStorage.setItem('signedIn','true')
+
+  }
+
+  logOut() {
+    localStorage.removeItem('signedIn')
+    this.signedIn.next(false);
+
+  }
+
+  checkAuth() {
+    localStorage.getItem('signedIn');
   }
 
 

@@ -1,26 +1,28 @@
 <h2>Create a New Account</h2>
 
 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <div class="form">
+    {{ registrationForm.get('username').errors | json }}
+    <label>username</label>
+    <input formControlName="username">
 
-  <!-- {{ registrationForm.get('username').errors | json }} -->
-  <label>username</label>
-  <input formControlName="username">
+    {{ registrationForm.get('password').errors | json }}
+    <label>password</label>
+    <input formControlName="password">
 
-  <!-- {{ registrationForm.get('password').errors | json }} -->
-  <label>password</label>
-  <input formControlName="password">
+    {{ registrationForm.get('passwordConfirm').errors | json }}
+    <label>re-enter password</label>
+    <input formControlName="passwordConfirm">
 
-  <!-- {{ registrationForm.get('passwordConfirm').errors | json }} -->
-  <label>re-enter password</label>
-  <input formControlName="passwordConfirm">
+  </div>
 
   <input type="submit" name="" value="Create Your Account">
 
-  <!-- {{ registrationForm.errors | json }} -->
+  {{ registrationForm.errors | json }}
 
 </form>
 
-<h3>Users List</h3>
+<h3>Users List</h3> (Just showing for testing purposes)
 
 <h5 *ngFor="let user of users">
   <a routerLink="/users/{{ user.id }}"> {{ user.username }} </a>

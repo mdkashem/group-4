@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+/////////////////// AuthModule ///////////////////
 import {AuthorizationModule } from './authorization/authorization.module';
 
 @NgModule({
