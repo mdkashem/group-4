@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ConfirmPassword } from '../validators/confirm-password';
+import { UniqueUser } from '../validators/unique-user';
 import { User } from '../user';
 import { AuthService } from '../auth.service';
 
@@ -22,8 +23,8 @@ export class RegistrationComponent implements OnInit {
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(25),
-      Validators.pattern(/^[a-z0-9]+$/)
-    ]),
+    ], this.uniqueUser.validate),
+
     password:new FormControl('',
     [
       Validators.required,
@@ -45,35 +46,62 @@ export class RegistrationComponent implements OnInit {
     // ]),
 
 
-  }, { validators: [this.confirmPassword.validate] });
+  }, { validators: [
+        this.confirmPassword.validate,
+
+      ]
+    });
 
   constructor(
     private authService:AuthService,
     private confirmPassword:ConfirmPassword,
-
+    private uniqueUser: UniqueUser
   ) { }
 
 
   users:User[];
 
+  foundUser:boolean
+
   onSubmit() {
+
+    console.log(this.foundUser);
     console.log(this.registrationForm.value);
+
     if (this.registrationForm.valid){
 
-      this.registrationForm.removeControl('passwordConfirm');
+      //this.registrationForm.removeControl('passwordConfirm');
 
-      this.authService.getUsers().subscribe((users)=> {
-        this.users = users;
-        // Still need to check if username already exists
+      this.authService.getUsers().subscribe((foundUsers)=> {
+
+        for (const user of foundUsers) {
+
+          if (this.registrationForm.value.username == user.username) {
+            this.foundUser = true;
+            console.log(this.foundUser);
+
+            alert("username already taken");
+
+          }
+        }
       });
 
-      this.authService.createUser(this.registrationForm.value).subscribe(response => {
 
-        this.users.push(response)
-        console.log(response);
-        console.log(this.users); // For testing purposes
 
-      })
+      if (this.foundUser == false) {
+        this.authService.createUser(this.registrationForm.value).subscribe(response => {
+
+          this.users.push(response)
+          console.log(response);
+          console.log(this.users); // For testing purposes
+
+
+
+        });
+      }
+
+      this.foundUser = false;
+      console.log(this.foundUser);
 
     } else {
       alert("invalid form")
