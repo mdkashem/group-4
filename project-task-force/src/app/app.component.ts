@@ -20,14 +20,16 @@ export class AppComponent {
 
 
 ////////// BehaviorSubject for auth state persistance //////////
-  signedIn = false;
+  signedIn = {status: false, currentUser: null};
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.authService.checkAuth();
+
     if (localStorage.getItem('signedIn')) {
-      this.authService.authenticateUser();
+      console.log(localStorage.getItem('signedIn'));
+      this.authService.authenticateUser(localStorage.getItem('signedIn'));
+      console.log(this.signedIn);
     }
 
     this.authService.signedIn.subscribe(signedIn => {

@@ -18,7 +18,9 @@ export class AuthService {
   // FROM FAKE USERS API
   usersUrl:string = 'https://my-json-server.typicode.com/tr-1000/demo/users/'
 
-  signedIn = new BehaviorSubject(false);
+  signedIn = new BehaviorSubject({status: false, currentUser: null});
+
+  //activeUser = new BehaviorSubject(null);
 
   constructor(private http:HttpClient) { }
 
@@ -45,15 +47,18 @@ export class AuthService {
     return this.http.delete<User>(url, httpOptions)
   }
 
-  authenticateUser() {
-    this.signedIn.next(true);
-    localStorage.setItem('signedIn','true')
+  authenticateUser(username:string) {
+    this.signedIn.next({status: true, currentUser: username});
+    localStorage.setItem('signedIn', username)
+
+
+    // JSON.parse() to unstringify
 
   }
 
   logOut() {
     localStorage.removeItem('signedIn')
-    this.signedIn.next(false);
+    this.signedIn.next({status: false, currentUser: null});
 
   }
 

@@ -11,6 +11,8 @@ export class ConfirmPassword implements Validator {
     if(password === passwordConfirm) {
       return null
     } else {
+      console.log('dont match');
+
       return { passwordConfirmed: false}
     }
 

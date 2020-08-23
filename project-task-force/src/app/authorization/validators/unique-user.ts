@@ -23,7 +23,7 @@ export class UniqueUser implements AsyncValidator {
             for (const user of users) {
               (user.username == value);
               if(user.username == value) {
-                return { available: false }
+                return { unavailable: true }
               }
             }
             return null

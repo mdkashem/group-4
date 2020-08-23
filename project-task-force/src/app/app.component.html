@@ -1,3 +1,10 @@
 <h1>Project-task-force</h1>
 
+<div *ngIf="signedIn.status">
+  <h2>Logged In as {{ signedIn.currentUser }}</h2>
+  <a href="/logout">
+    <button type="button" name="button">Log Out</button>
+  </a>
+</div>
+
 <router-outlet></router-outlet>

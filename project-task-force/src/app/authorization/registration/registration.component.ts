@@ -1,9 +1,12 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { ConfirmPassword } from '../validators/confirm-password';
 import { UniqueUser } from '../validators/unique-user';
 import { User } from '../user';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+
+
 
 
 
@@ -46,65 +49,41 @@ export class RegistrationComponent implements OnInit {
     // ]),
 
 
-  }, { validators: [
-        this.confirmPassword.validate,
-
-      ]
+  }, { validators: [this.confirmPassword.validate]
     });
 
   constructor(
     private authService:AuthService,
     private confirmPassword:ConfirmPassword,
-    private uniqueUser: UniqueUser
+    private uniqueUser: UniqueUser,
+    private router:Router,
+
   ) { }
 
 
   users:User[];
+  user:User;
 
-  foundUser:boolean
+  onSubmit(f:NgForm) {
 
-  onSubmit() {
-
-    console.log(this.foundUser);
     console.log(this.registrationForm.value);
-
     if (this.registrationForm.valid){
 
-      //this.registrationForm.removeControl('passwordConfirm');
-
-      this.authService.getUsers().subscribe((foundUsers)=> {
-
-        for (const user of foundUsers) {
-
-          if (this.registrationForm.value.username == user.username) {
-            this.foundUser = true;
-            console.log(this.foundUser);
-
-            alert("username already taken");
-
-          }
-        }
+      this.authService.getUsers().subscribe((users)=> {
+        this.users = users;
       });
 
+      this.authService.createUser(this.registrationForm.value).subscribe(response => {
+        this.users.push(response)
+        this.authService.authenticateUser(this.registrationForm.value.username);
 
-
-      if (this.foundUser == false) {
-        this.authService.createUser(this.registrationForm.value).subscribe(response => {
-
-          this.users.push(response)
-          console.log(response);
-          console.log(this.users); // For testing purposes
-
-
-
-        });
-      }
-
-      this.foundUser = false;
-      console.log(this.foundUser);
+      });
+      this.router.navigateByUrl('/');
 
     } else {
-      alert("invalid form")
+      console.log("invalid form");
+      console.log(f.errors);
+
     }
 
   }

@@ -1,16 +1,28 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit(f)" #f=ngForm>
 
   <div class="form">
-    {{ loginForm.get('username').errors | json }}
-    <label>username</label>
-    <input formControlName="username">
+    <div class="field">
+      <!-- {{ loginForm.get('username').errors | json }} -->
+      <label>username</label>
+      <input formControlName="username">
+      <p *ngIf="loginForm.get('username').hasError('required') && f.submitted">username required</p>
+      <p *ngIf="loginForm.get('username').hasError('minlength') && f.submitted">username must be at least 3 characters long</p>
+      <p *ngIf="loginForm.get('username').hasError('maxlength') && f.submitted">username can't be longer than 25 characters</p>
+    </div>
 
-    {{ loginForm.get('password').errors | json }}
-    <label>password</label>
-    <input formControlName="password">
+    <div class="field">
+      <!-- {{ loginForm.get('password').errors | json }} -->
+      <label>password</label>
+      <input formControlName="password" type="password">
+      <p *ngIf="loginForm.get('password').hasError('required') && f.submitted">password password required</p>
+      <p *ngIf="loginForm.get('password').hasError('minlength') && f.submitted">password must be at least 8 characters long</p>
+      <p *ngIf="loginForm.get('password').hasError('maxlength') && f.submitted">password can't be longer than 25 characters</p>
+    </div>
   </div>
 
-  <input type="submit" name="" value="Log In">
+  <p *ngIf="loginForm.invalid && f.submitted">incorrect username or password</p>
+
+  <input type="submit" value="Log In">
 
   {{ loginForm.errors | json }}
 

@@ -1,7 +1,8 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { User } from '../user';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -29,13 +30,14 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService:AuthService,
+    private router:Router
   ) { }
 
 
   users:User[];
   foundUser:User;
 
-  onSubmit () {
+  onSubmit (f:NgForm) {
 
     console.log(this.loginForm.value);
     if (this.loginForm.valid){
@@ -51,22 +53,14 @@ export class LoginComponent implements OnInit {
         }
 
         if (this.foundUser && this.foundUser.password == this.loginForm.value.password) {
-          this.authService.authenticateUser()
-          // TODO: add navigation to user page
-          // this.router.navigateByUrl('users/id')
-
-          alert("Welcome Back!")
+          this.authService.authenticateUser(this.foundUser.username);
+          this.router.navigateByUrl('/');
         } else {
           alert ("Incorrect username or password")
-          // TODO: maybe a page refresh of clear form??
         }
 
       });
 
-
-
-    } else {
-      alert(this.loginForm.errors)
     }
   }
 
