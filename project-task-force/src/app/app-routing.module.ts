@@ -6,7 +6,10 @@ import { SelectViewTaskComponent } from './select-view-task/select-view-task.com
 import { UpdateTaskComponent } from './update-task/update-task.component';
 import { HomeComponent } from './home/home.component';
 import { DeleteTaskComponent } from './delete-task/delete-task.component';
-import { RouteNotFoundComponent } from './route-not-found/route-not-found.component'
+import { RouteNotFoundComponent } from './route-not-found/route-not-found.component';
+import { LogoutComponent } from './authorization/logout/logout.component';
+import { LoginComponent } from './authorization/login/login.component';
+import { RegistrationComponent } from './authorization/registration/registration.component';
 
 const routes: Routes = [
   {
@@ -27,10 +30,26 @@ const routes: Routes = [
   }, {
     path: 'delete-task',
     component: DeleteTaskComponent
-  }, {
+  },
+  {
+    path: 'register',
+    component: RegistrationComponent
+  },
+  {
+    path:'logout',
+    component: LogoutComponent
+  },
+  {
+    path:'login',
+    component: LoginComponent
+  }
+  ,
+  {
     path: '**',
     component: RouteNotFoundComponent
-  }];
+  }
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,11 +1,12 @@
-<app-navbar></app-navbar>
+<app-navbar [signedIn]="signedIn" ></app-navbar>
 <h1>Project-task-force</h1>
 
 <div *ngIf="signedIn.status">
-  <h2>Logged In as {{ signedIn.currentUser }}</h2>
-  <a href="/logout">
-    <button type="button" name="button">Log Out</button>
-  </a>
+  <h3>Logged In as {{ signedIn.currentUser }}</h3>
 </div>
 
-<router-outlet></router-outlet>
+
+
+<router-outlet>
+  <app-login *ngIf="signedIn.status == false"></app-login>
+</router-outlet>
