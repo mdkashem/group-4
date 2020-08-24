@@ -19,8 +19,8 @@ import { LogoutComponent } from './logout/logout.component';
     HttpClientModule
   ],
 
-  exports: [
-    LoginComponent
-  ]
+  exports: [ LoginComponent ]
+
+
 })
 export class AuthorizationModule { }
