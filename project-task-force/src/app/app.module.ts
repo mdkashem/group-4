@@ -13,6 +13,11 @@ import { HomeComponent } from './home/home.component';
 import { RouteNotFoundComponent } from './route-not-found/route-not-found.component';
 import { DisplayTaskComponent } from './display-task/display-task.component';
 
+
+
+/////////////////// AuthModule ///////////////////
+import {AuthorizationModule } from './authorization/authorization.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,12 +28,14 @@ import { DisplayTaskComponent } from './display-task/display-task.component';
     UpdateTaskComponent,
     DeleteTaskComponent,
     HomeComponent,
-    RouteNotFoundComponent
+    RouteNotFoundComponent,
+    RouteNotFoundComponent,
     DisplayTaskComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AuthorizationModule,
     HttpClientModule
   ],
   providers: [],

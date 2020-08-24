@@ -1,12 +1,9 @@
 <nav class="nav navbar nav-pills navbar-expand-sm">
-    
     <a class="nav-item nav-link" routerLinkActive="active" routerLink="" [routerLinkActiveOptions]="{exact:true}">Home</a>
     <a class="nav-item nav-link" routerLinkActive="active" routerLink="/filter-search-tasks">Filter/Search</a>
     <a class="nav-item nav-link" routerLinkActive="active" routerLink="/create-tasks">Create</a>
     <a class="nav-item nav-link" routerLinkActive="active" routerLink="/select-view-task">Select/View</a>
     <a class="nav-item nav-link" routerLinkActive="active" routerLink="/update-task">Update</a>
     <a class="nav-item nav-link" routerLinkActive="active" routerLink="/delete-task">Delete</a>
+    <a class="nav-item nav-link" routerLinkActive="active" routerLink="/logout" *ngIf="signedIn.status">Log Out</a>
   </nav>
-
-
-  
