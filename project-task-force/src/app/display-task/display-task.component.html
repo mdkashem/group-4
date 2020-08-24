@@ -3,6 +3,6 @@
 <ul class="tasks">
     <li *ngFor="let task of tasks">
         <span class = "badge">{{task.id}}</span> {{task.title}}  <span class="badge-isCompleted">   Completed : {{task.completed}}</span>            <span class="badge-date">{{task.createdOn}}</span> 
-        <button>Update</button> <button>Delete</button>
+        <button class="button">Update</button> <button>Delete</button>
     </li>
   </ul>

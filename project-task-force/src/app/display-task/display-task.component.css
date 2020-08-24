@@ -72,3 +72,13 @@
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
   }
+  .tasks .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+ .tasks .button:hover {background-color: #054403;}
