@@ -1,0 +1,29 @@
+<h2>My tasks</h2>
+
+<div>
+  <label>Task title:
+    <input #taskTitle />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(taskTitle.value); taskTitle.value=''">
+    add
+  </button>
+</div>
+<!-- <app-task-search></app-task-search> -->
+<ul class="tasks">
+  <li *ngFor="let task of todotasks" id="tasks">
+    <a routerLink="/info/{{task.id}}">
+      <span class="badge">{{task.id}}</span> {{task.title}}<br> completed:
+
+      <div *ngIf="task.completed === true; then thenBlock else elseBlock"></div>
+      <ng-template #thenBlock> &#10004;</ng-template>
+      <ng-template #elseBlock> &#10006;</ng-template>
+       <!-- {{task.completed}} -->
+    </a>
+    <button class="delete" title="delete task"
+  (click)="delete(task)">x</button>
+  </li> 
+ 
+</ul>
+
+<app-task-info></app-task-info>

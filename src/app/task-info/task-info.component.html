@@ -1,0 +1,19 @@
+<div *ngIf="task">
+
+    <h2>{{task.title | uppercase}} Info</h2>
+    <div><span>id: </span>{{task.id}}</div>
+    <div>
+      <label> title:   
+        <input [(ngModel)]="task.title" placeholder="title"/>
+         </label><br>
+      <label>
+          <!-- <input [(ngModel)]="task.completed" placeholder="completed"/> -->
+          completed: </label>
+      <label>
+      <input [(ngModel)] ="task.completed" type="checkbox" onclick="if(this.checked){task.completed=true}"> 
+      </label>
+    </div>
+  
+  </div>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
