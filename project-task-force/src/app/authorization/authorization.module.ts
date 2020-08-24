@@ -19,16 +19,8 @@ import { LogoutComponent } from './logout/logout.component';
     HttpClientModule
   ],
 
-  exports: [
-    LoginComponent
+  exports: [ LoginComponent ]
 
-import { AuthorizationRoutingModule } from './authorization-routing.module';
 
-@NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    AuthorizationRoutingModule
-  ]
 })
 export class AuthorizationModule { }
