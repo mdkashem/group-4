@@ -40,7 +40,9 @@ export class LoginComponent implements OnInit {
   onSubmit (f:NgForm) {
 
     console.log(this.loginForm.value);
-    if (this.loginForm.valid){
+    if (this.loginForm.valid) {
+
+      this.authService.logIn(this.loginForm.value)
 
       this.authService.getUsers().subscribe((foundUsers)=> {
         console.log(foundUsers);

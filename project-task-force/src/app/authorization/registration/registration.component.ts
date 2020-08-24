@@ -7,9 +7,6 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
 
-
-
-
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -31,14 +28,14 @@ export class RegistrationComponent implements OnInit {
     password:new FormControl('',
     [
       Validators.required,
-      Validators.minLength(8),
+      Validators.minLength(7),
       Validators.maxLength(25),
     ]),
 
     passwordConfirm:new FormControl('',
     [
       Validators.required,
-      Validators.minLength(8),
+      Validators.minLength(7),
       Validators.maxLength(25),
 
     ]),
@@ -76,14 +73,13 @@ export class RegistrationComponent implements OnInit {
       this.authService.createUser(this.registrationForm.value).subscribe(response => {
         this.users.push(response)
         this.authService.authenticateUser(this.registrationForm.value.username);
-
       });
+
       this.router.navigateByUrl('/');
 
     } else {
       console.log("invalid form");
       console.log(f.errors);
-
     }
 
   }

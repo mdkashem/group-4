@@ -5,7 +5,7 @@
 
     <div class="field">
       <!-- {{ registrationForm.get('username').errors | json }} -->
-      <label>username</label>
+      <label>username</label> <br>
       <input formControlName="username">
       <p *ngIf="registrationForm.get('username').hasError('required') && f.submitted">username required</p>
       <p *ngIf="registrationForm.get('username').hasError('minlength') && f.submitted">username must be at least 3 characters long</p>
@@ -15,7 +15,7 @@
 
     <div class="field">
       <!-- {{ registrationForm.get('password').errors | json }} -->
-      <label>password</label>
+      <label>password</label> <br>
       <input formControlName="password" type="password">
       <p *ngIf="registrationForm.get('password').hasError('required') && f.submitted">password password required</p>
       <p *ngIf="registrationForm.get('password').hasError('minlength') && f.submitted">password must be at least 8 characters long</p>
@@ -23,8 +23,7 @@
     </div>
 
     <div class="field">
-
-      <label>confirm password</label>
+      <label>confirm password</label> <br>
       <input formControlName="passwordConfirm" type="password">
       <p *ngIf="registrationForm.get('passwordConfirm').hasError('required') && f.submitted">password confirmation required</p>
       <p *ngIf="registrationForm.hasError('passwordConfirmed')==false && f.submitted">passwords don't match</p>

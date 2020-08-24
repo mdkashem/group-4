@@ -15,8 +15,8 @@ const httpOptions = {
 })
 export class AuthService {
 
-  // FROM FAKE USERS API
-  usersUrl:string = 'https://my-json-server.typicode.com/tr-1000/demo/users/'
+
+  usersUrl:string = 'https://the-phone-book.herokuapp.com/users'
 
   signedIn = new BehaviorSubject({status: false, currentUser: null});
 
@@ -45,6 +45,10 @@ export class AuthService {
   deleteUser(user:User):Observable<User> {
     const url = `${this.usersUrl}/${user.id}`;
     return this.http.delete<User>(url, httpOptions)
+  }
+
+  logIn (user:User) {
+    return this.http.post<User>(this.usersUrl, user, httpOptions)
   }
 
   authenticateUser(username:string) {
