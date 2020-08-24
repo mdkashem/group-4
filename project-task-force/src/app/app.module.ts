@@ -11,6 +11,8 @@ import { UpdateTaskComponent } from './update-task/update-task.component';
 import { DeleteTaskComponent } from './delete-task/delete-task.component';
 import { HomeComponent } from './home/home.component';
 import { RouteNotFoundComponent } from './route-not-found/route-not-found.component';
+import { DisplayTaskComponent } from './display-task/display-task.component';
+
 /////////////////// AuthModule ///////////////////
 import {AuthorizationModule } from './authorization/authorization.module';
 import { DisplayTaskComponent } from './display-task/display-task.component';
@@ -26,14 +28,15 @@ import { DisplayTaskComponent } from './display-task/display-task.component';
     DeleteTaskComponent,
     HomeComponent,
     RouteNotFoundComponent,
+    DisplayTaskComponent,
+    RouteNotFoundComponent,
     DisplayTaskComponent
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthorizationModule,
-
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

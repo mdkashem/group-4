@@ -21,6 +21,14 @@ import { LogoutComponent } from './logout/logout.component';
 
   exports: [
     LoginComponent
+
+import { AuthorizationRoutingModule } from './authorization-routing.module';
+
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule,
+    AuthorizationRoutingModule
   ]
 })
 export class AuthorizationModule { }
