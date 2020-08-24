@@ -1,9 +1,9 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit(f)" #f=ngForm>
 
-  <div class="form">
+  <div class="form ">
     <div class="field">
       <!-- {{ loginForm.get('username').errors | json }} -->
-      <label>username</label>
+      <label>username</label> <br>
       <input formControlName="username">
       <p *ngIf="loginForm.get('username').hasError('required') && f.submitted">username required</p>
       <p *ngIf="loginForm.get('username').hasError('minlength') && f.submitted">username must be at least 3 characters long</p>
@@ -12,7 +12,7 @@
 
     <div class="field">
       <!-- {{ loginForm.get('password').errors | json }} -->
-      <label>password</label>
+      <label>password</label> <br>
       <input formControlName="password" type="password">
       <p *ngIf="loginForm.get('password').hasError('required') && f.submitted">password password required</p>
       <p *ngIf="loginForm.get('password').hasError('minlength') && f.submitted">password must be at least 8 characters long</p>
@@ -22,8 +22,10 @@
 
   <p *ngIf="loginForm.invalid && f.submitted">incorrect username or password</p>
 
-  <input type="submit" value="Log In">
+  <input type="submit" value="Sign In"> <br> <br>
 
   <!-- {{ loginForm.errors | json }} -->
+
+  <a href="/register">Sign Up</a>
 
 </form>
