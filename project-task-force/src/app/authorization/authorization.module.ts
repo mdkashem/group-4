@@ -23,5 +23,6 @@ import { LogoutComponent } from './logout/logout.component';
     LoginComponent,
     AuthorizationRoutingModule
   ]
+
 })
 export class AuthorizationModule { }
