@@ -21,7 +21,6 @@ const routes: Routes = [
     component: LogoutComponent
   }
 ];
-const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
