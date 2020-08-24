@@ -20,7 +20,9 @@ import { LogoutComponent } from './logout/logout.component';
   ],
 
   exports: [
-    LoginComponent ]
+    LoginComponent,
+    AuthorizationRoutingModule
+  ]
 
 })
 export class AuthorizationModule { }
