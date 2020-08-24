@@ -15,10 +15,6 @@ export class AppComponent {
 
 
 
-
-
-
-
 ////////// BehaviorSubject for auth state persistance //////////
   signedIn = {status: false, currentUser: null};
 

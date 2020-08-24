@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -11,11 +11,9 @@ import { UpdateTaskComponent } from './update-task/update-task.component';
 import { DeleteTaskComponent } from './delete-task/delete-task.component';
 import { HomeComponent } from './home/home.component';
 import { RouteNotFoundComponent } from './route-not-found/route-not-found.component';
-
-
-
 /////////////////// AuthModule ///////////////////
 import {AuthorizationModule } from './authorization/authorization.module';
+import { DisplayTaskComponent } from './display-task/display-task.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +26,7 @@ import {AuthorizationModule } from './authorization/authorization.module';
     DeleteTaskComponent,
     HomeComponent,
     RouteNotFoundComponent,
+    DisplayTaskComponent
 
   ],
   imports: [
