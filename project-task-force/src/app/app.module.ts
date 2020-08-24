@@ -15,7 +15,7 @@ import { DisplayTaskComponent } from './display-task/display-task.component';
 
 /////////////////// AuthModule ///////////////////
 import {AuthorizationModule } from './authorization/authorization.module';
-import { DisplayTaskComponent } from './display-task/display-task.component';
+
 
 @NgModule({
   declarations: [
