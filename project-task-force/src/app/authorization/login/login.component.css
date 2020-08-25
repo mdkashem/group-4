@@ -3,3 +3,7 @@
   flex-direction: column;
   width: 20%;
 }
+
+p {
+  color: red;
+}
