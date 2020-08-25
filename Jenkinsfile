@@ -10,6 +10,7 @@ pipeline {
       }
       steps {
         sh '''echo "hello"
+cd group-4
 cd project-task-force
 
 npm install '''
