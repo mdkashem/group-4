@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Build Angular') {
+    stage('Angular Build') {
       agent {
         docker {
           image 'node:12.18-alpine'
@@ -9,11 +9,6 @@ pipeline {
 
       }
       steps {
-        sh '''echo "hello"
-cd project-task-force
-
-npm install '''
-        sh 'mvn package'
         sh '''npm i
 npm run build'''
       }
