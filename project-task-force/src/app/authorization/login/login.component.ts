@@ -39,16 +39,18 @@ export class LoginComponent implements OnInit {
 
   onSubmit (f:NgForm) {
 
+
+
     console.log(this.loginForm.value);
     if (this.loginForm.valid) {
 
-      this.authService.logIn(this.loginForm.value)
+      // this.authService.logIn(this.loginForm.value).subscribe((response) => {
+      //   console.log(response);
+      // })
 
       this.authService.getUsers().subscribe((foundUsers)=> {
         console.log(foundUsers);
-
         for (const user of foundUsers) {
-
           if (this.loginForm.value.username == user.username) {
             this.foundUser = user
           }
@@ -60,15 +62,12 @@ export class LoginComponent implements OnInit {
         } else {
           alert ("Incorrect username or password")
         }
-
       });
 
     }
   }
 
-  login() {
 
-  }
 
   ngOnInit(): void {
   }
