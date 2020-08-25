@@ -36,7 +36,7 @@ import {AuthorizationModule } from './authorization/authorization.module';
     BrowserModule,
     AppRoutingModule,
     AuthorizationModule,
-
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
