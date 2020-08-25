@@ -4,7 +4,7 @@ pipeline {
     stage('Build Angular') {
       agent {
         docker {
-          image 'maven:3.6.3-adoptopenjdk-8'
+          image 'node:12.18-alpine'
         }
 
       }
@@ -14,6 +14,8 @@ cd project-task-force
 
 npm install '''
         sh 'mvn package'
+        sh '''npm i
+npm run build'''
       }
     }
 
