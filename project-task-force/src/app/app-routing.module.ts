@@ -10,6 +10,7 @@ import { RouteNotFoundComponent } from './route-not-found/route-not-found.compon
 import { LogoutComponent } from './authorization/logout/logout.component';
 import { LoginComponent } from './authorization/login/login.component';
 import { RegistrationComponent } from './authorization/registration/registration.component';
+import { AuthGuard } from './authorization/auth.guard';
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
     component: FilterSearchTasksComponent
   }, {
     path: 'create-tasks',
-    component: CreateTasksComponent
+    component: CreateTasksComponent,
+    canActivate: [AuthGuard]
   }, {
     path: 'select-view-task',
     component: SelectViewTaskComponent

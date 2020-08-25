@@ -13,10 +13,9 @@ import { HomeComponent } from './home/home.component';
 import { RouteNotFoundComponent } from './route-not-found/route-not-found.component';
 import { DisplayTaskComponent } from './display-task/display-task.component';
 
-
-
 /////////////////// AuthModule ///////////////////
-import {AuthorizationModule } from './authorization/authorization.module';
+import { AuthorizationModule } from './authorization/authorization.module';
+import { AuthGuard } from './authorization/auth.guard';
 
 @NgModule({
   declarations: [
