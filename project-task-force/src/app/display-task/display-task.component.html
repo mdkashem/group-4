@@ -1,8 +1,11 @@
 <p>display-tasks from API</p>
 
 <ul class="tasks">
-    <li *ngFor="let task of tasks">
+    <li *ngFor="let task of tasks"
+        [class.selected]="task===selectedTask" (click)="onSelect(task)">
         <span class = "badge">{{task.id}}</span> {{task.title}}  <span class="badge-isCompleted">   Completed : {{task.completed}}</span>            <span class="badge-date">{{task.createdOn}}</span> 
-        <button class="button">Update</button> <button>Delete</button>
+        <button (click)="updateTask($event)" class="button">Update</button> <button>Delete</button>
     </li>
   </ul>
+<!-- the line bellow is used for the child component property binding(it is one way data binding) -->
+  <app-task-detail [task]="selectedTask"> </app-task-detail>

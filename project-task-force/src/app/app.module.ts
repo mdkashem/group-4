@@ -15,6 +15,7 @@ import { DisplayTaskComponent } from './display-task/display-task.component';
 
 /////////////////// AuthModule ///////////////////
 import {AuthorizationModule } from './authorization/authorization.module';
+import { TaskDetailComponent } from './task-detail/task-detail.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {AuthorizationModule } from './authorization/authorization.module';
     RouteNotFoundComponent,
     DisplayTaskComponent,
     RouteNotFoundComponent,
-    DisplayTaskComponent
+    DisplayTaskComponent,
+    TaskDetailComponent
   ],
   imports: [
     BrowserModule,

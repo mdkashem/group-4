@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable} from 'rxjs';
+import { Observable, throwError} from 'rxjs';
 import { Task } from './Task';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
@@ -16,4 +16,16 @@ export class ToDoServiceService {
   getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(`http://18.216.97.30:8080/todos`);
   }
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  updateTask(task: Task): Observable<Task>{
+    return this.http.put<Task>('http://18.216.97.30:8080/todos', task, this.httpOptions).pipe(
+      catchError((error: any) =>{
+        alert('Update Failed');
+        return throwError(error);
+      })
+    )
+  }
+
 }

@@ -15,9 +15,17 @@ export class DisplayTaskComponent implements OnInit {
   ngOnInit(): void {
     this.getTasks();
   }
-
+  selectedTask: Task;
+  onSelect(task: Task): void {
+    this.selectedTask = task;
+  }
   getTasks(): void {
     this.taskService.getTasks().subscribe(tasks=>this.tasks = tasks)
+  }
+
+  updateTask($event): void {
+
+    console.log("update button was clicked! " , $event);
   }
 
 }
