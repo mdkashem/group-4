@@ -30,4 +30,10 @@ export class DisplayTaskComponent implements OnInit {
     .subscribe();
   }
 
+  delete(task: Task): void {
+    this.tasks = this.tasks.filter(h => h !== task);
+    //this.heroService.deleteHero(hero).subscribe();
+    this.taskService.deleteTask(task.id).subscribe();
+  }
+
 }

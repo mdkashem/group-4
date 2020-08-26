@@ -10,7 +10,13 @@ export class ToDoServiceService {
 
   constructor(private http: HttpClient) { }
   addTask(task: Task): Observable<any>{
-     return this.http.post<Task>(`http://18.216.97.30:8080//todos/?${task.id}`, task);
+     return this.http.post<Task>(`http://18.216.97.30:8080//todos/?${task.id}`, task).pipe(
+      catchError((error: any) => {
+        console.error(error);
+        alert (`The task was not created!`);
+        return throwError(error);
+      })
+    );
   }
 //getTask retrive list of task 
   getTasks(): Observable<Task[]> {
@@ -19,6 +25,16 @@ export class ToDoServiceService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+  deleteTask(id: number): Observable<any> {
+    return this.http.delete(`http://18.216.97.30:8080/todos/${id}`).pipe(
+      catchError((error: any) => {
+        console.error(error);
+        alert ('The task was not deleted!');
+        return throwError(error);
+      })
+    );
+  }
+
   updateTask(task: Task): Observable<Task>{
     return this.http.put<Task>('http://18.216.97.30:8080/todos', task, this.httpOptions).pipe(
       catchError((error: any) =>{
