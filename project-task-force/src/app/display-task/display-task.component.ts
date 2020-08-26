@@ -26,6 +26,8 @@ export class DisplayTaskComponent implements OnInit {
   updateTask($event): void {
 
     console.log("update button was clicked! " , $event);
+    this.taskService.updateTask(this.selectedTask)
+    .subscribe();
   }
 
 }

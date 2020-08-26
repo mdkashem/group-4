@@ -12,6 +12,7 @@ import { DeleteTaskComponent } from './delete-task/delete-task.component';
 import { HomeComponent } from './home/home.component';
 import { RouteNotFoundComponent } from './route-not-found/route-not-found.component';
 import { DisplayTaskComponent } from './display-task/display-task.component';
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 /////////////////// AuthModule ///////////////////
 import {AuthorizationModule } from './authorization/authorization.module';
@@ -38,7 +39,8 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
     BrowserModule,
     AppRoutingModule,
     AuthorizationModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
