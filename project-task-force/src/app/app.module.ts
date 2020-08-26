@@ -13,7 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { RouteNotFoundComponent } from './route-not-found/route-not-found.component';
 import { DisplayTaskComponent } from './display-task/display-task.component';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
-
+import {Ng2SearchPipeModule} from 'ng2-search-filter'
 /////////////////// AuthModule ///////////////////
 import {AuthorizationModule } from './authorization/authorization.module';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
@@ -40,6 +40,7 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
     AppRoutingModule,
     AuthorizationModule,
     HttpClientModule,
+    Ng2SearchPipeModule,
     FormsModule
   ],
   providers: [],
