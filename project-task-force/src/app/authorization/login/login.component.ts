@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+
+
   loginForm = new FormGroup({
 
     username:new FormControl('',
@@ -63,13 +65,15 @@ export class LoginComponent implements OnInit {
           alert ("Incorrect username or password")
         }
       });
-
     }
   }
 
 
 
   ngOnInit(): void {
+    if (localStorage.getItem('signedIn')) {
+      this.router.navigateByUrl('/')  
+    }
   }
 
 }
