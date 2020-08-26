@@ -1,12 +1,15 @@
 pipeline {
   agent any
   stages {
-    stage('Build Angular') {
-      steps {
-        sh '''echo "hello"
-cd project-task-force
+    stage('Angular Build') {
+      agent {
+        docker {
+          image 'maven:3.6.3-adoptopenjdk-8'
+        }
 
-npm install '''
+      }
+      steps {
+        sh 'mvn package'
       }
     }
 
