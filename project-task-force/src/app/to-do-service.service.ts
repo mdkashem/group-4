@@ -35,6 +35,16 @@ export class ToDoServiceService {
     );
   }
 
+  getTaskById(id: number): Observable<Task> {
+    return this.http.get<Task>(`http://18.216.97.30:8080/todos/${id}`).pipe(
+      catchError((error: any) => {
+        console.error(error);
+        alert (`The Task does not exist!`);
+        return throwError(error);
+      })
+    );
+  }
+
   updateTask(task: Task): Observable<Task>{
     return this.http.put<Task>('http://18.216.97.30:8080/todos', task, this.httpOptions).pipe(
       catchError((error: any) =>{
