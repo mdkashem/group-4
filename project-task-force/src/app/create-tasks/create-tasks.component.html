@@ -1,1 +1,39 @@
-<p>create-tasks works!</p>
+
+  
+
+ <div id = "div1">
+  <div [hidden]="submitted">
+    <h1>Create New Task</h1>
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+<!--  
+      <div class="form-group">
+       <label for="id">Id</label>
+       <input type="number" class="form-control" id="id"
+           required
+           [(ngModel)]="model.id" name="id">
+  </div>
+  -->
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text"  class="form-control" id="title"
+           [(ngModel)]="model.title" name="title">
+  </div>
+
+  <div class="form-group">
+    <label for="date">Date</label>
+    <input type="text"  class="form-control" id="date"
+           [(ngModel)]="model.createdOn" name="date">
+  </div>
+
+  <div class="form-group">
+    <label for="com">Completed</label>
+      <select class="form-control" id="com" required>
+      <option *ngFor="let pow of completed" [value]="pow">{{pow}}</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-success" (click)="createTask(); "[disabled]="!heroForm.form.valid">Submit</button>
+  
+</form>
+</div>
+
+</div>

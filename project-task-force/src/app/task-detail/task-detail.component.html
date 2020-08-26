@@ -1,0 +1,19 @@
+<div id ="div1" *ngIf="task">
+    <h2>{{task.title | uppercase}} Details</h2>
+    <div><span>The Task id: </span>{{task.id}}</div>
+    <div>
+      <label>Name:
+            <input [(ngModel)]="task.title" placeholder={{task.title}}/>
+      </label>
+      <label>Completed:
+        <input [(ngModel)]="task.completed" placeholder={{task.completed}}/>
+  </label>
+  <label>The Task Created On :
+    <input [(ngModel)]="task.createdOn" placeholder={{task.createdOn}}/>
+</label>
+    </div>
+    <button (click)="save()">Update</button>
+  
+  </div>
+
+  

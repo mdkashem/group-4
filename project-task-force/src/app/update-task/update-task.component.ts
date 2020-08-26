@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-update-task',
   templateUrl: './update-task.component.html',
@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateTaskComponent implements OnInit {
 
-  constructor() { }
+  constructor( private _router: Router) { }
 
   ngOnInit(): void {
+    this._router.navigate(['/filter-search-tasks'])
   }
 
 }

@@ -12,10 +12,13 @@ import { DeleteTaskComponent } from './delete-task/delete-task.component';
 import { HomeComponent } from './home/home.component';
 import { RouteNotFoundComponent } from './route-not-found/route-not-found.component';
 import { DisplayTaskComponent } from './display-task/display-task.component';
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import {Ng2SearchPipeModule} from 'ng2-search-filter'
 
-/////////////////// AuthModule ///////////////////
 import { AuthorizationModule } from './authorization/authorization.module';
-import { AuthGuard } from './authorization/auth.guard';
+import { TaskDetailComponent } from './task-detail/task-detail.component';
+
+
 
 @NgModule({
   declarations: [
@@ -28,14 +31,18 @@ import { AuthGuard } from './authorization/auth.guard';
     DeleteTaskComponent,
     HomeComponent,
     RouteNotFoundComponent,
-    DisplayTaskComponent
-
+    DisplayTaskComponent,
+    RouteNotFoundComponent,
+    DisplayTaskComponent,
+    TaskDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthorizationModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

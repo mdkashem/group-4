@@ -1,1 +1,30 @@
-<p>filter-search-tasks works!</p>
+
+<div class="col-md-4">
+    <b>Search Task</b>
+  </div>
+  <div class="form-group col-md-4">
+    <input type="text" class="form-control"  placeholder="Enter Keyword for filter result" [(ngModel)]="searchedKeyword">
+  </div>
+  <app-task-detail [(task)]="selectedTask"> </app-task-detail>
+  <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id </th>
+            <th>Title</th>
+            <th>Completed</th>
+            <th>Created On</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of tasks | filter:searchedKeyword">
+            <td>{{item.id}}</td>
+            <td>{{item.title}}</td>
+            <td>{{item.completed}}</td>
+            <td>{{item.createdOn}}</td>
+            <td><button [class.selected]="item===selectedTask" (click)="onSelect(item)" (click)="updateTask($event)" class="button">Update</button ></td>
+            <td><button class="btn btn-success" (click)="delete(item)">Delete</button></td>
+        </tr>
+    </tbody>
+  </table>
+
+  
