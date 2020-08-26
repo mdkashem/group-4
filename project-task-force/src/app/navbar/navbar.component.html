@@ -1,10 +1,15 @@
 <nav class="nav navbar nav-pills navbar-expand-sm">
 
     <a class="nav-item nav-link" routerLinkActive="active" routerLink="" [routerLinkActiveOptions]="{exact:true}">Home</a>
-    <a class="nav-item nav-link" routerLinkActive="active" routerLink="/filter-search-tasks">Filter/Search</a>
-    <a class="nav-item nav-link" routerLinkActive="active" routerLink="/create-tasks">Create</a>
-    <a class="nav-item nav-link" routerLinkActive="active" routerLink="/update-task">Update</a>
+
+    <!-- Logged in users see -->
+    <a class="nav-item nav-link" routerLinkActive="active" routerLink="/filter-search-tasks" *ngIf="signedIn.status">Filter/Search</a>
+    <a class="nav-item nav-link" routerLinkActive="active" routerLink="/create-tasks" *ngIf="signedIn.status">Create</a>
+    <a class="nav-item nav-link" routerLinkActive="active" routerLink="/update-task" *ngIf="signedIn.status">Update</a>
     <a class="nav-item nav-link" routerLinkActive="active" routerLink="/logout" *ngIf="signedIn.status">Sign Out</a>
+
+    <!-- users not logged in sees -->
     <a class="nav-item nav-link" routerLinkActive="active" routerLink="/login" *ngIf="signedIn.status==false">Sign In</a>
     <a class="nav-item nav-link" routerLinkActive="active" routerLink="/register" *ngIf="signedIn.status==false">Sign Up</a>
+
   </nav>

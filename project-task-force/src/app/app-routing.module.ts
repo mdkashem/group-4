@@ -18,7 +18,8 @@ const routes: Routes = [
     component: HomeComponent
   }, {
     path: 'filter-search-tasks',
-    component: FilterSearchTasksComponent
+    component: FilterSearchTasksComponent,
+    canActivate: [AuthGuard]
   }, {
     path: 'create-tasks',
     component: CreateTasksComponent,
@@ -28,10 +29,12 @@ const routes: Routes = [
     component: SelectViewTaskComponent
   }, {
     path: 'update-task',
-    component: UpdateTaskComponent
+    component: UpdateTaskComponent,
+    canActivate: [AuthGuard]
   }, {
     path: 'delete-task',
-    component: DeleteTaskComponent
+    component: DeleteTaskComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',
