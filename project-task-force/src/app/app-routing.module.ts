@@ -10,6 +10,7 @@ import { RouteNotFoundComponent } from './route-not-found/route-not-found.compon
 import { LogoutComponent } from './authorization/logout/logout.component';
 import { LoginComponent } from './authorization/login/login.component';
 import { RegistrationComponent } from './authorization/registration/registration.component';
+import { AuthGuard } from './authorization/auth.guard';
 
 const routes: Routes = [
   {
@@ -17,19 +18,23 @@ const routes: Routes = [
     component: HomeComponent
   }, {
     path: 'filter-search-tasks',
-    component: FilterSearchTasksComponent
+    component: FilterSearchTasksComponent,
+    canActivate: [AuthGuard]
   }, {
     path: 'create-tasks',
-    component: CreateTasksComponent
+    component: CreateTasksComponent,
+    canActivate: [AuthGuard]
   }, {
     path: 'select-view-task',
     component: SelectViewTaskComponent
   }, {
     path: 'update-task',
-    component: UpdateTaskComponent
+    component: UpdateTaskComponent,
+    canActivate: [AuthGuard]
   }, {
     path: 'delete-task',
-    component: DeleteTaskComponent
+    component: DeleteTaskComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',

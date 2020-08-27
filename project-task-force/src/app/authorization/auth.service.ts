@@ -26,7 +26,9 @@ export class AuthService {
 
   createUser(user:User):Observable<User> {
     console.log('user created');
-    return this.http.post<User>(this.usersUrl, user, httpOptions);
+    return this.http.post<User>(this.usersUrl, user, {
+      withCredentials: true
+    });
   }
 
   getUsers():Observable<User[]> {
@@ -48,7 +50,8 @@ export class AuthService {
   }
 
   logIn (user:User) {
-    return this.http.post<User>(this.usersUrl, user, httpOptions)
+    console.log(user);
+    return this.http.post<User>('https://the-phone-book.herokuapp.com/sessions', user)
   }
 
   authenticateUser(username:string) {

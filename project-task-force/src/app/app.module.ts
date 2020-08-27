@@ -14,9 +14,10 @@ import { RouteNotFoundComponent } from './route-not-found/route-not-found.compon
 import { DisplayTaskComponent } from './display-task/display-task.component';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import {Ng2SearchPipeModule} from 'ng2-search-filter'
-/////////////////// AuthModule ///////////////////
-import {AuthorizationModule } from './authorization/authorization.module';
+
+import { AuthorizationModule } from './authorization/authorization.module';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
+
 
 
 @NgModule({

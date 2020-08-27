@@ -18,7 +18,7 @@ export class ToDoServiceService {
       })
     );
   }
-//getTask retrive list of task 
+//getTask retrive list of task
   getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(`http://18.216.97.30:8080/todos`);
   }
@@ -46,6 +46,16 @@ export class ToDoServiceService {
   }
 
   updateTask(task: Task): Observable<Task>{
+    return this.http.put<Task>('http://18.216.97.30:8080/todos', task, this.httpOptions).pipe(
+      catchError((error: any) =>{
+        alert('Update Failed');
+        return throwError(error);
+      })
+    )
+  }
+
+  toggleCompleted(task:Task):Observable<any> {
+    console.log(task);
     return this.http.put<Task>('http://18.216.97.30:8080/todos', task, this.httpOptions).pipe(
       catchError((error: any) =>{
         alert('Update Failed');

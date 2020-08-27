@@ -86,6 +86,9 @@ export class RegistrationComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if (localStorage.getItem('signedIn')) {
+      this.router.navigateByUrl('/')
+    }
     this.authService.getUsers().subscribe((users)=> {    // subscribe to observable is like .then()
       this.users = users;
     });

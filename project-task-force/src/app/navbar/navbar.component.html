@@ -1,10 +1,42 @@
-<nav class="nav navbar nav-pills navbar-expand-sm">
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/"><h1>Task Force</h1></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <a class="nav-item nav-link" routerLinkActive="active" routerLink="" [routerLinkActiveOptions]="{exact:true}">Home</a>
-    <a class="nav-item nav-link" routerLinkActive="active" routerLink="/filter-search-tasks">Filter/Search</a>
-    <a class="nav-item nav-link" routerLinkActive="active" routerLink="/create-tasks">Create</a>
-    <a class="nav-item nav-link" routerLinkActive="active" routerLink="/update-task">Update</a>
-    <a class="nav-item nav-link" routerLinkActive="active" routerLink="/logout" *ngIf="signedIn.status">Sign Out</a>
-    <a class="nav-item nav-link" routerLinkActive="active" routerLink="/login" *ngIf="signedIn.status==false">Sign In</a>
-    <a class="nav-item nav-link" routerLinkActive="active" routerLink="/register" *ngIf="signedIn.status==false">Sign Up</a>
-  </nav>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <a class="nav-item nav-link active" routerLinkActive="active" routerLink="" [routerLinkActiveOptions]="{exact:true}">Home</a>
+    <ul class="navbar-nav mr-auto">
+
+      <!-- Logged in users see -->
+      <li class="nav-item ">
+        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/filter-search-tasks" *ngIf="signedIn.status">Filter/Search</a>
+      </li>
+
+      <li class="nav-item ">
+        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/create-tasks" *ngIf="signedIn.status">Create</a>
+      </li>
+
+      <li class="nav-item ">
+        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/logout" *ngIf="signedIn.status">Sign Out</a>
+      </li>
+
+
+      <!-- users not logged in sees -->
+
+
+      <li class="nav-item active">
+        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/login" *ngIf="signedIn.status==false">Sign In</a>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/register" *ngIf="signedIn.status==false">Sign Up</a>
+      </li>
+
+    </ul>
+
+    <span class="navbar-text" *ngIf="signedIn.status" >
+      Welcome, {{ signedIn.currentUser }}
+    </span>
+  </div>
+</nav>
