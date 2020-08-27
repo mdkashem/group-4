@@ -1,7 +1,11 @@
 .form {
+  border: 1px #6c757d solid;
+  border-radius: 16px;
+  margin-top: 10em;
+  padding: 35px;
   display: flex;
   flex-direction: column;
-  width: 20%;
+  width: 50%;
 }
 
 p {

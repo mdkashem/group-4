@@ -5,7 +5,7 @@
 
     <div class="form-group">
       <!-- {{ registrationForm.get('username').errors | json }} -->
-      <label>username</label> <br>
+      <label>Username</label> <br>
       <input class="form-control" formControlName="username">
       <p *ngIf="registrationForm.get('username').hasError('required') && f.submitted">username required</p>
       <p *ngIf="registrationForm.get('username').hasError('minlength') && f.submitted">username must be at least 3 characters long</p>
@@ -15,7 +15,7 @@
 
     <div class="form-group">
       <!-- {{ registrationForm.get('password').errors | json }} -->
-      <label>password</label> <br>
+      <label>Password</label> <br>
       <input class="form-control" formControlName="password" type="password">
       <p *ngIf="registrationForm.get('password').hasError('required') && f.submitted">password password required</p>
       <p *ngIf="registrationForm.get('password').hasError('minlength') && f.submitted">password must be at least 8 characters long</p>
@@ -33,7 +33,7 @@
     <input class="btn btn-primary" type="submit" name="" value="Create Your Account">
 
     <div class="container"><br><br>
-      <h3>Users List</h3> (Just showing for testing purposes)
+      <h4>Users List</h4> 
 
       <h5 *ngFor="let user of users">
         <li> {{ user.username }} </li>
