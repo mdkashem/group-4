@@ -9,8 +9,9 @@ import {Task} from '../Task'
 })
 export class DisplayTaskComponent implements OnInit {
 
- tasks: Task[];  
+ tasks: Task[];
   constructor( private taskService: ToDoServiceService) { }
+  task:Task
 
   ngOnInit(): void {
     this.getTasks();
@@ -28,6 +29,22 @@ export class DisplayTaskComponent implements OnInit {
     console.log("update button was clicked! " , $event);
     this.taskService.updateTask(this.selectedTask)
     .subscribe();
+  }
+
+  onToggle(task:Task) {
+    task.completed = !task.completed
+    this.taskService.toggleCompleted(task).subscribe((task:Task) => {
+      console.log(task)}
+    )
+  }
+
+  // Set Dynamic Classes
+  setClasses(task:Task) {
+    let classes = {
+      todo: true,
+      'is-complete':task.completed
+    }
+    return classes
   }
 
   delete(task: Task): void {

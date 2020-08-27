@@ -20,8 +20,8 @@
     <tbody>
         <tr *ngFor="let item of tasks">
             <td>{{item.id}}</td>
-            <td>{{item.title}}</td>
-            <td>{{item.completed}}</td>
+            <td><span [ngClass]="setClasses(item)">{{ item.title }}</span></td>
+            <td><input (change)="onToggle(item)" type="checkbox" [checked]="item.completed" /></td>
             <td>{{item.createdOn}}</td>
             <td><button [class.selected]="item===selectedTask" (click)="onSelect(item)" (click)="updateTask($event)" class="button">Update</button ></td>
             <td><button class="btn btn-success" (click)="delete(item)">Delete</button></td>
