@@ -63,7 +63,7 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit(f:NgForm) {
 
-    console.log(this.registrationForm.value);
+    //console.log(this.registrationForm.value);
     if (this.registrationForm.valid){
 
       this.authService.getUsers().subscribe((users)=> {
