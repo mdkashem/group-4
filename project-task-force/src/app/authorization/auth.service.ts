@@ -16,7 +16,9 @@ const httpOptions = {
 export class AuthService {
 
 
-  usersUrl:string = 'https://the-phone-book.herokuapp.com/users'
+  //usersUrl:string = 'https://the-phone-book.herokuapp.com/users'
+  
+  usersUrl:string =  'https://my-json-server.typicode.com/tr-1000/demo/users';
 
   signedIn = new BehaviorSubject({status: false, currentUser: null});
 
