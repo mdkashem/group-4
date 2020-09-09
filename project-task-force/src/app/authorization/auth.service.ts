@@ -16,9 +16,11 @@ const httpOptions = {
 export class AuthService {
 
 
+ 
   //usersUrl:string = 'https://the-phone-book.herokuapp.com/users'
   
-  usersUrl:string =  'https://my-json-server.typicode.com/tr-1000/demo/users';
+  usersUrl:string = 'https://my-json-server.typicode.com/tr-1000/demo/users'
+
 
   signedIn = new BehaviorSubject({status: false, currentUser: null});
 
@@ -29,7 +31,6 @@ export class AuthService {
   createUser(user:User):Observable<User> {
     console.log('user created');
     return this.http.post<User>(this.usersUrl, user, {
-      withCredentials: true
     });
   }
 
@@ -51,10 +52,6 @@ export class AuthService {
     return this.http.delete<User>(url, httpOptions)
   }
 
-  logIn (user:User) {
-    console.log(user);
-    return this.http.post<User>('https://the-phone-book.herokuapp.com/sessions', user)
-  }
 
   authenticateUser(username:string) {
     this.signedIn.next({status: true, currentUser: username});

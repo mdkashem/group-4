@@ -18,7 +18,7 @@ export class UniqueUser implements AsyncValidator {
     console.log(value);
 
     return this.http
-      .get<any>('https://the-phone-book.herokuapp.com/users').pipe(
+      .get<any>('https://my-json-server.typicode.com/tr-1000/demo/users').pipe(
           map((users) => {
             for (const user of users) {
               (user.username == value);

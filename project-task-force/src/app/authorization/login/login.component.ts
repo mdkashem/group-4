@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     password:new FormControl('',
     [
       Validators.required,
-      Validators.minLength(8),
+      Validators.minLength(7),
       Validators.maxLength(25),
     ])
 
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 
 
 
-    console.log(this.loginForm.value);
+    //console.log(this.loginForm.value);
     if (this.loginForm.valid) {
 
       // this.authService.logIn(this.loginForm.value).subscribe((response) => {
@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (localStorage.getItem('signedIn')) {
-      this.router.navigateByUrl('/')  
+      this.router.navigateByUrl('/')
     }
   }
 

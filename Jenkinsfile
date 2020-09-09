@@ -4,12 +4,29 @@ pipeline {
     stage('Angular Build') {
       agent {
         docker {
-          image 'maven:3.6.3-adoptopenjdk-8'
+          image 'node:12.18-alpine'
+          args '--mount type=bind,source=/home/ec2-user/deploy,target=/deploy'
         }
 
       }
       steps {
-        sh 'mvn package'
+        sh '''cp dist/project-task-force/* /deploy
+
+
+'''
+      }
+    }
+
+    stage('Deploy to S3') {
+      agent {
+        docker {
+          image 'amazon/aws-cli'
+          args '--mount type=bind,source=/home/ec2-user/deploy,target=/deploy --interactive --entrypoint=""'
+        }
+
+      }
+      steps {
+        sh 'aws s3 cp /deploy s3://task-todo-angular-bucket --recursive --acl public-read'
       }
     }
 
